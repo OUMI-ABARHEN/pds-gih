@@ -23,8 +23,8 @@ public class Service {
 
     private Emplacement emplacement;
 
-    public Service(String code, String nomService) {
-
+    public Service(String code, String nomService,Emplacement emp) {
+        this.emplacement = emp;
         this.code = code;
         this.nomService = nomService;
     }

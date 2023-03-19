@@ -1,9 +1,6 @@
 package ma.uiass.eia.pds.backend.Entite;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -14,7 +11,7 @@ public class Salle extends Espace{
         this.type=type;
     }
 
-
+    @Column(name="TypeSalle")
     private TypeSalle type;
 
     public Salle() {

@@ -2,13 +2,16 @@ package ma.uiass.eia.pds.backend.Metier;
 
 import java.util.List;
 
+import ma.uiass.eia.pds.backend.Dao.EmplacementDaoImp;
 import ma.uiass.eia.pds.backend.Dao.ServiceDaoImp;
+import ma.uiass.eia.pds.backend.Entite.Emplacement;
 import ma.uiass.eia.pds.backend.Entite.Service;
 
 public class MetierService {
 
 
     private ServiceDaoImp daoS=new ServiceDaoImp();
+    private EmplacementDaoImp daoE = new EmplacementDaoImp();
 
 
 
@@ -21,12 +24,12 @@ public class MetierService {
         return daoS.findById(id);
     }
 
-    public void addService(String code,String Sname) {
-        Service s=new Service (code,Sname);
+    public void addService(String code,String Sname,int i) {
+        Service s=new Service (code,Sname,daoE.findById(i));
         daoS.add(s);
     }
-    public void deleteService(String code,String Sname) {
-        Service s=new Service (code,Sname);
+    public void deleteService(String Sname) {
+        Service s= daoS.findByName(Sname);
         daoS.delete(s);
 
     }

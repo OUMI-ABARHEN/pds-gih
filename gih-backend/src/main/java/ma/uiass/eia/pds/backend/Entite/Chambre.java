@@ -1,9 +1,6 @@
 package ma.uiass.eia.pds.backend.Entite;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 @Entity
 @Table(name="Chambre")
@@ -13,9 +10,7 @@ public class Chambre extends Espace{
         this.type=type;
     }
 
-
-
-
+    @Column(name="TypeChambre")
     private TypeChambre type;
 
     public Chambre() {
