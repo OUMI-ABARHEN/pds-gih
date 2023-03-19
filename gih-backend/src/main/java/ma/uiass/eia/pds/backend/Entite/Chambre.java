@@ -32,7 +32,7 @@ public class Chambre extends Espace{
 
     @Override
     public String toString() {
-        return super.toString()+"Chambre{" +
+        return "Chambre" +super.toString()+
                 "type=" + type +
                 '}';
     }

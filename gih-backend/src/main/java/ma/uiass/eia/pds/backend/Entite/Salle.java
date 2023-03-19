@@ -30,7 +30,7 @@ public class Salle extends Espace{
 
     @Override
     public String toString() {
-        return super.toString()+"Salle{" +
+        return "Salle{" +super.toString()+
                 "type=" + type +
                 '}';
     }

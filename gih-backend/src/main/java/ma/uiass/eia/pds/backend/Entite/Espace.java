@@ -59,7 +59,9 @@ public class Espace {
 
     @Override
     public String toString() {
-        return "Espace{" +
-                "espace_id=" + espace_id + '}';
+        return "{" +
+                "id=" + espace_id +
+                ", quantite=" + quantite +
+                ", service=" + service.getNomService();
     }
 }

@@ -55,6 +55,8 @@ public class Emplacement {
     @Override
     public String toString() {
         return "Emplacement{" +
-                "nomBatiment='" + nomBatiment+"}";
+                "nomBatiment='" + nomBatiment + '\'' +
+                ", etage='" + etage + '\'' +
+                '}';
     }
 }
