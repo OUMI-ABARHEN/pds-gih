@@ -2,6 +2,7 @@ package ma.uiass.eia.pds.frontend.Home;
 
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import ma.uiass.eia.pds.frontend.Menu.Menu;
 import ma.uiass.eia.pds.frontend.Scroll.ScrollPaneWin11;
 import ma.uiass.eia.pds.frontend.Swing.EventLogin;
@@ -13,14 +14,14 @@ import java.awt.*;
 public class Home extends javax.swing.JFrame {
 
 
-    public Home() {
+    public Home() throws JsonProcessingException {
         initComponents();
     }
 
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents() throws JsonProcessingException {
 
         jPanel1 = new javax.swing.JPanel();
         scrollPaneWin111 = new ScrollPaneWin11();
@@ -102,7 +103,11 @@ public class Home extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Home().setVisible(true);
+                try {
+                    new Home().setVisible(true);
+                } catch (JsonProcessingException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
     }

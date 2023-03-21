@@ -1,24 +1,22 @@
 package ma.uiass.eia.pds.backend.Entite;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name="Emplacement")
-public class Emplacement {
+public class Emplacement implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="Id")
     private int emplacement_id;
+
+    @Column(name = "codeEmplacement")
+    private String code;
     private String nomBatiment,etage;
     @OneToMany(mappedBy ="emplacement")
     private List<Service> list ;
-
-    public Emplacement(String nomBatiment, String etage) {
-        this.nomBatiment = nomBatiment;
-        this.etage = etage;
-    }
-    public Emplacement(){};
 
     public int getEmplacement_id() {
         return emplacement_id;
@@ -26,6 +24,14 @@ public class Emplacement {
 
     public void setEmplacement_id(int emplacement_id) {
         this.emplacement_id = emplacement_id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getNomBatiment() {
@@ -52,10 +58,19 @@ public class Emplacement {
         this.list = list;
     }
 
+    public Emplacement(String code, String nomBatiment, String etage) {
+        this.nomBatiment = nomBatiment;
+        this.etage = etage;
+        this.code=code;
+    }
+    public Emplacement(){};
+
+
     @Override
     public String toString() {
         return "Emplacement{" +
-                "nomBatiment='" + nomBatiment + '\'' +
+                "code='" + code + '\'' +
+                ", nomBatiment='" + nomBatiment + '\'' +
                 ", etage='" + etage + '\'' +
                 '}';
     }

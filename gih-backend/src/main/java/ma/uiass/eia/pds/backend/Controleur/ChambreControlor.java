@@ -8,6 +8,7 @@ import ma.uiass.eia.pds.backend.Entite.Chambre;
 import ma.uiass.eia.pds.backend.Entite.Emplacement;
 import ma.uiass.eia.pds.backend.Metier.MetierChambre;
 
+import java.util.Calendar;
 import java.util.List;
 
 @Path("pds")
@@ -18,5 +19,11 @@ public class ChambreControlor {
     @Produces(MediaType.APPLICATION_JSON)
     public List<Chambre> getMyList() {
         return metierChambre.getAllChambre();
+    }
+
+    public static void main(String[] args) {
+        ChambreControlor c = new ChambreControlor();
+        List<Chambre> list = c.getMyList();
+        System.out.println(list);
     }
 }

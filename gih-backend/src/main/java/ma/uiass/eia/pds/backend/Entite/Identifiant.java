@@ -2,14 +2,19 @@ package ma.uiass.eia.pds.backend.Entite;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name="Identifiant")
-public class Identifiant {
+public class Identifiant implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="Id")
     private int identifiant_id;
+
+    @Column(name = "codeIdentifiant")
+    private String code;
+
     @Column
     private String nom,prenom,email,password;
     private int tel;
@@ -24,7 +29,7 @@ public class Identifiant {
 
     }
 
-    public Identifiant(String nom, String prenom, String email, int tel, Sexe sexe, String password, Job job){
+    public Identifiant(String code, String nom, String prenom, String email, int tel, Sexe sexe, String password, Job job){
 
         this.nom=nom;
         this.prenom=prenom;
@@ -33,8 +38,9 @@ public class Identifiant {
         this.sexe=sexe;
         this.password=password;
         this.job=job;
-
+        this.code=code;
     }
+
 
     public long getId() {
         return identifiant_id;
@@ -87,6 +93,29 @@ public class Identifiant {
     public void setJob(Job job) {
         this.job = job;
     }
+    public int getIdentifiant_id() {
+        return identifiant_id;
+    }
+
+    public void setIdentifiant_id(int identifiant_id) {
+        this.identifiant_id = identifiant_id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     @Override
     public String toString() {
@@ -94,5 +123,6 @@ public class Identifiant {
                 ", nom='" + nom + '\'' +
                 '}';
     }
+
 }
 

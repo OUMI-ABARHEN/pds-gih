@@ -1,6 +1,7 @@
 package ma.uiass.eia.pds.frontend.MainLogin;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import ma.uiass.eia.pds.frontend.Home.Home;
 import ma.uiass.eia.pds.frontend.Http.HttpClient;
 import ma.uiass.eia.pds.frontend.Login.LoginAndRegister;
@@ -12,7 +13,7 @@ public class MainLogin extends javax.swing.JFrame {
     private Home home;
     HttpClient t = new HttpClient();
 
-    public MainLogin() {
+    public MainLogin() throws JsonProcessingException {
         initComponents();
         home = new Home();
         EventLogin event = new EventLogin() {
@@ -97,7 +98,11 @@ public class MainLogin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainLogin().setVisible(true);
+                try {
+                    new MainLogin().setVisible(true);
+                } catch (JsonProcessingException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
     }
