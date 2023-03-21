@@ -14,8 +14,8 @@ public class MetierSalle extends MetierEspace{
     private SalleDaoImp daoS = new SalleDaoImp();
     private ServiceDaoImp daoSer = new ServiceDaoImp();
 
-    public void addSalle(int quantite, String nomS, TypeSalle type) {
-        Salle s = new Salle(quantite,daoSer.findByName(nomS),type);
+    public void addSalle(String code,int quantite, String nomS, TypeSalle type) {
+        Salle s = new Salle(code,quantite,daoSer.findByName(nomS),type);
         daoS.add(s);
     }
     public void delete(int id) {

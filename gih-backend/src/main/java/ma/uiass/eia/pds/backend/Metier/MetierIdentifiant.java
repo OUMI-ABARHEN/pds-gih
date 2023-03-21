@@ -10,7 +10,7 @@ import java.util.List;
 public class MetierIdentifiant {
     IdentifiantDaoImp daoI= new IdentifiantDaoImp();
     JobDaoImp daoJ = new JobDaoImp();
-    public void add(String nom, String prenom, String email, int tel, Sexe sexe, String password, int idJob){daoI.add(new Identifiant(nom,prenom,email,tel,sexe,password,daoJ.findById(idJob)));}
+    public void add(String code, String nom, String prenom, String email, int tel, Sexe sexe, String password, int idJob){daoI.add(new Identifiant(code,nom,prenom,email,tel,sexe,password,daoJ.findById(idJob)));}
     public String getPassword(int id){
         return daoI.findById(id).getPassword();
     }

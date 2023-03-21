@@ -2,14 +2,18 @@ package ma.uiass.eia.pds.backend.Entite;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name="Job")
-public class Job {
+public class Job implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="Id")
     private int job_id;
+
+    @Column(name = "codeJob")
+    private String code;
 
     public Job() {
 
@@ -18,9 +22,10 @@ public class Job {
     @Column
     private String nomJob;
 
-    public Job( String nom){
+    public Job( String code,String nom){
 
         this.nomJob=nom;
+        this.code=code;
     }
     public int getIdJob(){
         return job_id;

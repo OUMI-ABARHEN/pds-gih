@@ -11,9 +11,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import ma.uiass.eia.pds.backend.Entite.Chambre;
 import ma.uiass.eia.pds.backend.Entite.Emplacement;
 import ma.uiass.eia.pds.backend.Entite.Service;
@@ -31,26 +31,16 @@ public class Menu extends JComponent {
     List<Service> services = t.getServices();
     List<Emplacement> emplacements = t.getEmplacements();
     List<Chambre> chambres = t.getChambres();
-   /* private String[][] menuItems = new String[][]{
-            {"Dashboard"},
-            {"Localisation 1", services.get(0).getNomService(), services.get(1).getNomService()},
-            {"Localisation 2", "Sevice 2-1", "Sevice 2-2", "Sevice 2-3"},
-            {"Localisation 3", "Sevice 3-1", "Sevice 3-2", "Sevice 3-3"},
-            {"Informations", "User info" , "Update infos" },
-            {"Log out"},
-
-
-    };*/
-
     private List<List<String>> menuItems = new ArrayList<>();
 
 
-    public Menu() {
+    public Menu() throws JsonProcessingException {
         init();
     }
-    public Menu(Home main) {
+    public Menu(Home main) throws JsonProcessingException {
         this.myMain = main;
         init();
+        myTable = new MyTable();
     }
 
 
@@ -78,7 +68,12 @@ public class Menu extends JComponent {
                     public void actionPerformed(ActionEvent ae) {
                         // Handle logout action
                         // Navigate to the Login page
-                        JFrame loginFrame = new MainLogin();
+                        JFrame loginFrame = null;
+                        try {
+                            loginFrame = new MainLogin();
+                        } catch (JsonProcessingException e) {
+                            throw new RuntimeException(e);
+                        }
                         loginFrame.setVisible(true);
                         JFrame mainFrame = (JFrame) SwingUtilities.getWindowAncestor(Menu.this);
                         mainFrame.dispose();
@@ -147,12 +142,9 @@ public class Menu extends JComponent {
                     // add the Test component to jPanel1
                     myMain.getPanel().removeAll(); // remove any existing components from the panel
                     myMain.getPanel().setLayout(new MigLayout("fill")); // set the layout to MigLayout with fill constraint
-                    myMain.getPanel().add(table, "grow"); // add the Test component to the panel
+                    myMain.getPanel().add(myTable, "grow"); // add the Test component to the panel
                     myMain.getPanel().revalidate(); // revalidate the panel to update its layout
                     myMain.getPanel().repaint(); // repaint the panel to reflect the changes
-
-
-
                 }
             });
             panel.add(subItem);
@@ -187,15 +179,9 @@ public class Menu extends JComponent {
 
     public Home myMain;
     private JPanel mainLogin = new JPanel() ;
-    private JTable table = new JTable();
-    public void loadTable() {
-        DefaultTableModel model = (DefaultTableModel) table.getModel();
-        model.setRowCount(0); // clear existing rows from the table
-        for (Chambre chambre : chambres) {
-            Object[] row = new Object[] { chambre.getEspace_id(), chambre.getType() };
-            model.addRow(row);
-        }
-    }
+    private MyTable myTable ;
+
+
 
 
 }

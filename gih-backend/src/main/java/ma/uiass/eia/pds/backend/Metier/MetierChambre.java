@@ -13,9 +13,9 @@ public class MetierChambre extends MetierEspace{
     private ChambreDaoImp daoC = new ChambreDaoImp();
 
 
-    public void addChambre(int quantite, String nomS, TypeChambre type) {
+    public void addChambre(String code, int quantite, String nomS, TypeChambre type) {
 
-        daoC.add(new Chambre(quantite,daoS.findByName(nomS),type));
+        daoC.add(new Chambre(code,quantite,daoS.findByName(nomS),type));
     }
 
     public void delete(int id) {

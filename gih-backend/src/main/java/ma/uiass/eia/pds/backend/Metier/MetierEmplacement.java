@@ -6,8 +6,8 @@ import java.util.*;
 
 public class MetierEmplacement {
     private EmplacementDaoImp daoE = new EmplacementDaoImp();
-    public void create(String nomBatiment, String etage){
-        daoE.add(new Emplacement(nomBatiment,etage));
+    public void create(String code, String nomBatiment, String etage){
+        daoE.add(new Emplacement(code,nomBatiment,etage));
     }
     public  void delete(int id){daoE.delete(daoE.findById(id));}
     public List<Emplacement> getAll(){return daoE.getAll();}

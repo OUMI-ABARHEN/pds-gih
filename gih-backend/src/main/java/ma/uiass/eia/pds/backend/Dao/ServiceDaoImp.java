@@ -76,12 +76,15 @@ public class ServiceDaoImp implements IServiceDao {
 
     @Override
     public Service findByName(String nom) {
-        // TODO Auto-generated method stub
-        TypedQuery<Service> query = em.createQuery(" FROM Service  WHERE nomService = :nom", Service.class);
+        TypedQuery<Service> query = em.createQuery("FROM Service WHERE nomService = :nom", Service.class);
         query.setParameter("nom", nom);
-        return query.getSingleResult();
-
+        try {
+            return query.getSingleResult();
+        } catch (NonUniqueResultException e) {
+            return null;
+        }
     }
+
 
 	/*public int nombresLits(Service s) {
 
