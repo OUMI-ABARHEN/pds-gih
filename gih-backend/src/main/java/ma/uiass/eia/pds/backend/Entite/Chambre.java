@@ -46,6 +46,7 @@ public class Chambre extends Espace implements Serializable {
         return "Chambre{" +
                 "code='" + code + '\'' +
                 ", type=" + type +
+                "id" + this.getEspace_id()+
                 '}';
     }
 }

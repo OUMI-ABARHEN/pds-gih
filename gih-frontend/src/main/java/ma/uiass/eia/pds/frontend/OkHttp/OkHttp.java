@@ -5,6 +5,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import ma.uiass.eia.pds.backend.Entite.Chambre;
+import ma.uiass.eia.pds.backend.Entite.Identifiant;
 import ma.uiass.eia.pds.backend.Entite.Lit;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -68,6 +69,30 @@ public class OkHttp {
     public static void main(String[] args) {
         OkHttp o = new OkHttp();
         System.out.println(o.chambreList());
+
+    }
+
+    public List<Identifiant> getIdentifiants() {
+        Request request = new Request.Builder().url("http://localhost:2002/pds/identifiants").build();
+        List<Identifiant> identifiants = new ArrayList<>();
+        try {
+            Response response = okHttpClient.newCall(request).execute();
+            if (!response.isSuccessful()) {
+                throw new IOException(String.valueOf(response));
+            }
+            JsonElement jsonElement = gson.fromJson(response.body().charStream(), JsonElement.class);
+            JsonArray jsonArray = jsonElement.getAsJsonArray();
+            for (JsonElement j : jsonArray) {
+                JsonObject jsonObject = j.getAsJsonObject();
+                System.out.println(jsonObject);
+                Identifiant identifiant = gson.fromJson(jsonObject, Identifiant.class);
+                identifiants.add(identifiant);
+
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return identifiants;
 
     }
 }

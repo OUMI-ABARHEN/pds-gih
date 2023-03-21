@@ -13,7 +13,6 @@ import java.util.List;
 public class Espace implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @JsonIgnore
     @Column(name="Id")
     private int espace_id;
     @Column(name="quantite")

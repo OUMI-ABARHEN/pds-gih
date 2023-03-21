@@ -120,9 +120,16 @@ public class Identifiant implements Serializable {
     @Override
     public String toString() {
         return "Identifiant{" +
+                "identifiant_id=" + identifiant_id +
+                ", code='" + code + '\'' +
                 ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", tel=" + tel +
+
+                ", sexe=" + sexe +
                 '}';
     }
-
 }
 

@@ -3,6 +3,7 @@ package ma.uiass.eia.pds.backend.Controleur;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import ma.uiass.eia.pds.backend.Entite.Identifiant;
+import ma.uiass.eia.pds.backend.Entite.Lit;
 import ma.uiass.eia.pds.backend.Metier.MetierIdentifiant;
 
 import java.util.List;
@@ -23,6 +24,18 @@ public class IdentifiantControlor {
     public Identifiant get(@PathParam("id") int id) {
         return  metierIdentifiant.finfByid(id);
 
+    }
+
+    @GET
+    @Path("identifiants")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Identifiant> getMyLits() {
+        return metierIdentifiant.getAll();
+    }
+
+    public static void main(String[] args) {
+        IdentifiantControlor i = new IdentifiantControlor();
+        System.out.println(i.getMyLits());
     }
 
 }
