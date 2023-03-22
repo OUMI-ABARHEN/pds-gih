@@ -1,5 +1,7 @@
 package ma.uiass.eia.pds.frontend.Test.form;
 
+import ma.uiass.eia.pds.backend.Entite.Identifiant;
+import ma.uiass.eia.pds.frontend.OkHttp.OkHttp;
 import ma.uiass.eia.pds.frontend.Test.component.Card;
 import ma.uiass.eia.pds.frontend.Test.model.Model_Card;
 import ma.uiass.eia.pds.frontend.Test.model.StatusType;
@@ -8,9 +10,12 @@ import ma.uiass.eia.pds.frontend.Test.swing.ScrollBar;
 import ma.uiass.eia.pds.frontend.Test.swing.Table;
 
 import java.awt.Color;
+import java.util.List;
 import javax.swing.*;
 
 public class Form_Home extends JPanel {
+    OkHttp o = new OkHttp();
+    List<Identifiant> identifiants = o.getIdentifiants();
 
     public Form_Home() {
         initComponents();
@@ -24,9 +29,12 @@ public class Form_Home extends JPanel {
         JPanel p = new JPanel();
         p.setBackground(Color.WHITE);
         spTable.setCorner(JScrollPane.UPPER_RIGHT_CORNER, p);
-        table.addRow(new Object[]{"Mike Bhand", "mikebhand@gmail.com", "Admin", "25 Apr,2018", StatusType.PENDING});
-        table.addRow(new Object[]{"Andrew Strauss", "andrewstrauss@gmail.com", "Editor", "25 Apr,2018", StatusType.APPROVED});
-        table.addRow(new Object[]{"Ross Kopelman", "rosskopelman@gmail.com", "Subscriber", "25 Apr,2018", StatusType.APPROVED});
+        for (Identifiant i : identifiants){
+            table.addRow(new Object[]{i.getNom()+i.getPrenom(), i.getEmail(), i.getSexe(), "25 Apr,2018", StatusType.APPROVED});
+        }
+        /*table.addRow(new Object[]{"oumaima abarhen", "obarhen@gmail.com", "Admin", "25 Apr,2018", StatusType.PENDING});
+        table.addRow(new Object[]{"ahmed el ghassib", "ahmedelghassib@gmail.com", "Editor", "25 Apr,2018", StatusType.APPROVED});
+        table.addRow(new Object[]{"badr elabbady", "badrelghassib@gmail.com", "Subscriber", "25 Apr,2018", StatusType.APPROVED});
         table.addRow(new Object[]{"Mike Hussy", "mikehussy@gmail.com", "Admin", "25 Apr,2018", StatusType.REJECT});
         table.addRow(new Object[]{"Kevin Pietersen", "kevinpietersen@gmail.com", "Admin", "25 Apr,2018", StatusType.PENDING});
         table.addRow(new Object[]{"Andrew Strauss", "andrewstrauss@gmail.com", "Editor", "25 Apr,2018", StatusType.APPROVED});
@@ -37,7 +45,7 @@ public class Form_Home extends JPanel {
         table.addRow(new Object[]{"Andrew Strauss", "andrewstrauss@gmail.com", "Editor", "25 Apr,2018", StatusType.APPROVED});
         table.addRow(new Object[]{"Ross Kopelman", "rosskopelman@gmail.com", "Subscriber", "25 Apr,2018", StatusType.APPROVED});
         table.addRow(new Object[]{"Mike Hussy", "mikehussy@gmail.com", "Admin", "25 Apr,2018", StatusType.REJECT});
-        table.addRow(new Object[]{"Kevin Pietersen", "kevinpietersen@gmail.com", "Admin", "25 Apr,2018", StatusType.PENDING});
+        table.addRow(new Object[]{"Kevin Pietersen", "kevinpietersen@gmail.com", "Admin", "25 Apr,2018", StatusType.PENDING});*/
     }
 
     @SuppressWarnings("unchecked")

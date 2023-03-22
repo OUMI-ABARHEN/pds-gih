@@ -5,6 +5,8 @@ import javax.persistence.EntityTransaction;
 
 import ma.uiass.eia.pds.backend.Entite.Identifiant;
 import ma.uiass.eia.pds.backend.HibernateUtility.HibernateUtility;
+
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
@@ -95,5 +97,29 @@ public class IdentifiantDaoImp implements IIdentifiantDao{
             }
             e.printStackTrace();
         }
+    }
+
+    public Identifiant findByCode(String codeIdentifiant) {
+        EntityTransaction et = null;
+        Identifiant i = null;
+        try {
+            et = em.getTransaction();
+            if (!et.isActive()) {
+                et.begin();
+            }
+            TypedQuery<Identifiant> query = em.createQuery("SELECT i FROM Identifiant i WHERE i.code = :codeIdentifiant", Identifiant.class);
+            query.setParameter("codeIdentifiant", codeIdentifiant);
+            i = query.getSingleResult();
+        }
+        catch (NoResultException e) {
+            // handle no result found exception
+        }
+        catch (Exception e) {
+            if (et != null) {
+                et.rollback();
+            }
+            e.printStackTrace();
+        }
+        return i;
     }
 }

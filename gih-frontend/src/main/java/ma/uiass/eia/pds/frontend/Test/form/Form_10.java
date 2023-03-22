@@ -1,29 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ma.uiass.eia.pds.frontend.Test.form;
 
 import ma.uiass.eia.pds.backend.Entite.Chambre;
-import ma.uiass.eia.pds.backend.Entite.Identifiant;
 import ma.uiass.eia.pds.backend.Entite.Lit;
 import ma.uiass.eia.pds.frontend.OkHttp.OkHttp;
 
-import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 import java.util.List;
 
-
-
-public class Form_1 extends javax.swing.JPanel {
+public class Form_10 extends javax.swing.JPanel {
 
     OkHttp o = new OkHttp();
-    List<Identifiant> identifiants = o.getIdentifiants();
+    List<Chambre> chambres = o.chambreList();
 
 
-    public Form_1() {
+    public Form_10() {
         initComponents();
     }
 
@@ -43,11 +33,11 @@ public class Form_1 extends javax.swing.JPanel {
         //jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         //jLabel1.setText("Form 1");
 
-        tableModel = new DefaultTableModel();
-        tableModel.setColumnIdentifiers(new String[]{"Code", "Nom", "Prenom", "email", "Tel", "Sexe"});
+        DefaultTableModel tableModel = new DefaultTableModel();
+        tableModel.setColumnIdentifiers(new String[]{"Code", "TypeChambre", "Max capacite"});
         table.setModel(tableModel);
         jScrollPane1.setViewportView(table);
-        loadIdentifiants();
+        loadLits(tableModel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -67,10 +57,10 @@ public class Form_1 extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    public void loadIdentifiants() {
+    private void loadLits(DefaultTableModel tableModel) {
         tableModel.setRowCount(0);
-        for (Identifiant identifiant : identifiants) {
-            Object[] row = new Object[]{identifiant.getCode(), identifiant.getNom(), identifiant.getPrenom(), identifiant.getEmail(), identifiant.getTel(), identifiant.getSexe()};
+        for (Chambre chambre : chambres) {
+            Object[] row = new Object[]{chambre.getCode(), chambre.getType(), chambre.getQuantite()};
             tableModel.addRow(row);
         }
     }
@@ -79,6 +69,6 @@ public class Form_1 extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table;
-    DefaultTableModel tableModel;
 // End of variables declaration//GEN-END:variables
+
 }

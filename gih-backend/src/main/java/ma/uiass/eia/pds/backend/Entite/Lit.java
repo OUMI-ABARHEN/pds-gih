@@ -20,16 +20,18 @@ public class Lit implements Serializable {
     private TypeLit typeLit;
     @Column(name="marque")
     private String marque;
-    @JsonIgnore
+
+    @Column
+    @Enumerated(EnumType.STRING)
+    private EtatLit etat;
+
     @JoinColumn(name = "espace_id",referencedColumnName = "Id")
     @ManyToOne
     private Espace espace;
     @JsonIgnore
     @OneToMany(mappedBy ="lit")
     private List<Sejour> list ;
-    @Column
-    @Enumerated(EnumType.STRING)
-    private EtatLit etat;
+
 
     public int getLit_id() {
         return lit_id;

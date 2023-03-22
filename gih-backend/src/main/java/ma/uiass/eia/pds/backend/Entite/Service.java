@@ -1,6 +1,8 @@
 package ma.uiass.eia.pds.backend.Entite;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -16,9 +18,11 @@ public class Service implements Serializable {
     private String code;
     @Column
     private String nomService;
+    @JsonIgnore
     @OneToMany(mappedBy ="service")
     private List<Espace> list ;
 
+    @JsonIgnore
     @JoinColumn(name = "Emplacement_id",referencedColumnName = "Id")
     @ManyToOne
 
