@@ -5,14 +5,10 @@
  */
 package ma.uiass.eia.pds.frontend.Test.form;
 
-import ma.uiass.eia.pds.backend.Entite.Chambre;
 import ma.uiass.eia.pds.backend.Entite.Identifiant;
-import ma.uiass.eia.pds.backend.Entite.Lit;
 import ma.uiass.eia.pds.frontend.OkHttp.OkHttp;
 
-import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 import java.util.List;
 
 

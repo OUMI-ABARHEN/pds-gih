@@ -2,8 +2,6 @@ package ma.uiass.eia.pds.frontend.MyFrames;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import ma.uiass.eia.pds.backend.Entite.Chambre;
-import ma.uiass.eia.pds.backend.Entite.Lit;
-import ma.uiass.eia.pds.frontend.Http.HttpClient;
 import ma.uiass.eia.pds.frontend.OkHttp.OkHttp;
 
 import javax.swing.*;

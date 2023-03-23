@@ -3,7 +3,6 @@ package ma.uiass.eia.pds.frontend.Test.form;
 import ma.uiass.eia.pds.backend.Entite.Identifiant;
 import ma.uiass.eia.pds.frontend.OkHttp.OkHttp;
 import ma.uiass.eia.pds.frontend.Test.component.Card;
-import ma.uiass.eia.pds.frontend.Test.model.Model_Card;
 import ma.uiass.eia.pds.frontend.Test.model.StatusType;
 import ma.uiass.eia.pds.frontend.Test.swing.PanelBorder;
 import ma.uiass.eia.pds.frontend.Test.swing.ScrollBar;

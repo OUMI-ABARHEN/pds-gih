@@ -33,20 +33,20 @@ public class Menu extends javax.swing.JPanel {
 
     private void init() {
         listMenu1.addItem(new Model_Menu("1", "Dashboard", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("8", "Accounts", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("add", "Add account", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("update", "Update account", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("delete", "Delete account", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("5", "Consulter lits", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("10", "Demander lits", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("stock", "Affecter lits account", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("7", "Sejour", Model_Menu.MenuType.MENU));
         listMenu1.addItem(new Model_Menu("", " ", Model_Menu.MenuType.EMPTY));
 
-        listMenu1.addItem(new Model_Menu("", "My Data", Model_Menu.MenuType.TITLE));
-        listMenu1.addItem(new Model_Menu("", " ", Model_Menu.MenuType.EMPTY));
-        listMenu1.addItem(new Model_Menu("emplacement", "Emplacements", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("24", "Services", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("5", "Chambres", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("bed", "Lits", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("10", "Logout", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("", "", Model_Menu.MenuType.EMPTY));
+//        listMenu1.addItem(new Model_Menu("", "My Data", Model_Menu.MenuType.TITLE));
+//        listMenu1.addItem(new Model_Menu("", " ", Model_Menu.MenuType.EMPTY));
+//        listMenu1.addItem(new Model_Menu("emplacement", "Emplacements", Model_Menu.MenuType.MENU));
+//        listMenu1.addItem(new Model_Menu("24", "Services", Model_Menu.MenuType.MENU));
+//        listMenu1.addItem(new Model_Menu("5", "Chambres", Model_Menu.MenuType.MENU));
+//        listMenu1.addItem(new Model_Menu("bed", "Lits", Model_Menu.MenuType.MENU));
+//        listMenu1.addItem(new Model_Menu("10", "Logout", Model_Menu.MenuType.MENU));
+//        listMenu1.addItem(new Model_Menu("", "", Model_Menu.MenuType.EMPTY));
     }
 
     @SuppressWarnings("unchecked")

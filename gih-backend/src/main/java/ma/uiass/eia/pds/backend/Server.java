@@ -10,7 +10,7 @@ import java.net.URI;
 
 public class Server {
     public static void main(String[] args) {
-        URI baseUri = UriBuilder.fromUri("http://localhost/").port(2002).build();
+        URI baseUri = UriBuilder.fromUri("http://localhost/").port(8888).build();
         ResourceConfig config = new ResourceConfig();
         config.register(ServiceControlor.class);
         config.register(EmplacementControlor.class);

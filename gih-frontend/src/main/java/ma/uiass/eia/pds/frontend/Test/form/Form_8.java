@@ -1,7 +1,6 @@
 package ma.uiass.eia.pds.frontend.Test.form;
 
 import ma.uiass.eia.pds.backend.Entite.Emplacement;
-import ma.uiass.eia.pds.backend.Entite.Service;
 import ma.uiass.eia.pds.frontend.OkHttp.OkHttp;
 
 import javax.swing.table.DefaultTableModel;
