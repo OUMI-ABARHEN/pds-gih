@@ -2,6 +2,7 @@ package ma.uiass.eia.pds.backend;
 
 import jakarta.ws.rs.core.UriBuilder;
 import ma.uiass.eia.pds.backend.Controleur.*;
+import ma.uiass.eia.pds.backend.Dao.EmplacementDaoImp;
 import ma.uiass.eia.pds.backend.Entite.*;
 import ma.uiass.eia.pds.backend.Metier.*;
 import org.glassfish.grizzly.http.server.HttpServer;
@@ -86,9 +87,9 @@ public class App
         //System.out.println(mtl.getLits());
 
 
-        LocalDate localDate = LocalDate.of(2022, 12, 13);
+       /* LocalDate localDate = LocalDate.of(2022, 12, 13);
         LocalDateTime localDateTime = localDate.atStartOfDay();
-        Date date = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+        Date date = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());*/
 
 
         MetierSejour metierSejour=new MetierSejour();
@@ -98,6 +99,8 @@ public class App
 
        // System.out.println(metierChambre.getAll().get(0));
         //System.out.println(new java.util.Date().getTime());
+
+
 
 
 

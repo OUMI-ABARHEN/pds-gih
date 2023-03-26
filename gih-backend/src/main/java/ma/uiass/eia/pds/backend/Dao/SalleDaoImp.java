@@ -90,6 +90,10 @@ public class SalleDaoImp implements ISalleDao {
         return query.getResultList();
     }
 
+    @Override
+    public Espace findByCode(String code) {
+        return null;
+    }
 
 
 }

@@ -23,10 +23,14 @@ public class Service implements Serializable {
     private List<Espace> list ;
 
     @JsonIgnore
+    @OneToMany(mappedBy ="service")
+    private List<Lit> listLit ;
+
     @JoinColumn(name = "Emplacement_id",referencedColumnName = "Id")
     @ManyToOne
-
     private Emplacement emplacement;
+
+
 
     public int getService_id() {
         return service_id;

@@ -18,6 +18,8 @@ public class Server {
         config.register(LitControlor.class);
         config.register(SejourControlor.class);
         config.register(ChambreControlor.class);
+        config.register(DemandeControlor.class);
+        config.register(DetailDemandeControlor.class);
         HttpServer server = GrizzlyHttpServerFactory.createHttpServer(baseUri, config);
 
     }

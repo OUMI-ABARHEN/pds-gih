@@ -86,4 +86,9 @@ public class ChambreDaoImp implements IChambreDao {
         TypedQuery<Chambre> query = em.createQuery("SELECT es FROM Chambre es where nomService="+nom, Chambre.class);
         return query.getResultList();
     }
+
+    @Override
+    public Espace findByCode(String code) {
+        return null;
+    }
 }

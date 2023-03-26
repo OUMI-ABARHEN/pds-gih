@@ -53,7 +53,7 @@ public class LitGUI extends JFrame {
         System.out.println(lits);
         tableModel.setRowCount(0);
         for (Lit lit : lits) {
-            Object[] row = new Object[]{lit.getLit_id(), lit.getTypeLit(), lit.getMarque(), lit.getEspace(), lit.getEtat()};
+            Object[] row = new Object[]{lit.getLit_id(), lit.getTypeLit(), lit.getEspace(), lit.getEtat()};
             tableModel.addRow(row);
         }
     }

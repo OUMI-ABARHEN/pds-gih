@@ -9,20 +9,10 @@ import java.util.List;
 @Table(name="Chambre")
 public class Chambre extends Espace implements Serializable {
 
-    @Column(name = "codeChambre")
-    private String code;
-
     @Column(name="TypeChambre")
     @Enumerated(EnumType.STRING)
     private TypeChambre type;
 
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
 
     public TypeChambre getType() {
         return type;
@@ -33,9 +23,8 @@ public class Chambre extends Espace implements Serializable {
     }
 
     public Chambre(String code, int quantite, Service service, TypeChambre type) {
-        super(quantite,service);
+        super(code,quantite,service);
         this.type=type;
-        this.code=code;
     }
     public Chambre() {
 
@@ -43,10 +32,8 @@ public class Chambre extends Espace implements Serializable {
 
     @Override
     public String toString() {
-        return "Chambre{" +
-                "code='" + code + '\'' +
-                ", type=" + type +
-                "id" + this.getEspace_id()+
+        return "Chambre{" +super.toString()+
+                "type=" + type +
                 '}';
     }
 }

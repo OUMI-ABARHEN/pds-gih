@@ -19,9 +19,8 @@ public class Sejour implements Serializable {
     @Column(name="date_sortie")
     private Date date_sortie;
 
-    @JoinColumn(name = "Lit_id",referencedColumnName = "Id")
-    @ManyToOne
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "lit_id", referencedColumnName = "Id")
     private Lit lit;
 
     public Sejour(Date date_entre, Date date_sortie, Lit lit) {

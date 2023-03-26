@@ -1,5 +1,7 @@
 package ma.uiass.eia.pds.backend.Entite;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -15,6 +17,7 @@ public class Emplacement implements Serializable {
     @Column(name = "codeEmplacement")
     private String code;
     private String nomBatiment,etage;
+    @JsonIgnore
     @OneToMany(mappedBy ="emplacement")
     private List<Service> list ;
 

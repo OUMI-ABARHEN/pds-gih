@@ -24,8 +24,8 @@ public class MetierService {
         return daoS.findById(id);
     }
 
-    public void addService(String code,String Sname,int i) {
-        Service s=new Service (code,Sname,daoE.findById(i));
+    public void addService(String code,String Sname,String codeE) {
+        Service s=new Service (code,Sname,daoE.findByCode(codeE));
         daoS.add(s);
     }
     public void deleteService(String Sname) {

@@ -1,10 +1,8 @@
 package ma.uiass.eia.pds.backend.Controleur;
 
 
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
+import jakarta.ws.rs.*;
 
-import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import ma.uiass.eia.pds.backend.Entite.Service;
 import ma.uiass.eia.pds.backend.Metier.MetierService;
@@ -27,5 +25,13 @@ public class ServiceControlor {
     public List<Service> getMyServices() {
         return metierService.showServices();
     }
+
+    @PUT
+    @Path("addService/{code}/{nomS}/{codeE}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public void addService(@PathParam("code") String code,@PathParam("nomS") String nomS,@PathParam("codeE") String codeE ){
+        metierService.addService(code,nomS,codeE);
+    }
+
 
 }

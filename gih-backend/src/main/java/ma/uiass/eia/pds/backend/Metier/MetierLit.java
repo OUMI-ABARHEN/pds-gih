@@ -9,8 +9,8 @@ import java.util.List;
 public class MetierLit {
     private LitDaoImp daoL = new LitDaoImp();
     private EspaceDaoImp daoE = new EspaceDaoImp();
-    public void addLit(String code, TypeLit typeLit, String marque, int espace, EtatLit etat) {
-        Lit lit = new Lit(code,typeLit, marque, daoE.findById(espace), etat);
+    public void addLit(String code, TypeLit typeLit, EtatLit etat, EtatPhysique etatPhysique,String codeS) {
+        Lit lit = new Lit(code,typeLit, etat,etatPhysique, daoE.findByCode(codeS), null);
         daoL.add(lit);
     }
 

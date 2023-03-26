@@ -18,20 +18,23 @@ public class Lit implements Serializable {
     @Column
     @Enumerated(EnumType.STRING)
     private TypeLit typeLit;
-    @Column(name="marque")
-    private String marque;
 
     @Column
     @Enumerated(EnumType.STRING)
     private EtatLit etat;
 
+    @Column
+    @Enumerated(EnumType.STRING)
+    private EtatPhysique etatPhysique;
+
     @JoinColumn(name = "espace_id",referencedColumnName = "Id")
     @ManyToOne
     private Espace espace;
-    @JsonIgnore
-    @OneToMany(mappedBy ="lit")
-    private List<Sejour> list ;
-
+    @OneToOne(mappedBy = "lit")
+    private Sejour sejour;
+    @JoinColumn(name = "service_id",referencedColumnName = "Id")
+    @ManyToOne
+    private Service service;
 
     public int getLit_id() {
         return lit_id;
@@ -57,12 +60,20 @@ public class Lit implements Serializable {
         this.typeLit = typeLit;
     }
 
-    public String getMarque() {
-        return marque;
+    public EtatLit getEtat() {
+        return etat;
     }
 
-    public void setMarque(String marque) {
-        this.marque = marque;
+    public void setEtat(EtatLit etat) {
+        this.etat = etat;
+    }
+
+    public EtatPhysique getEtatPhysique() {
+        return etatPhysique;
+    }
+
+    public void setEtatPhysique(EtatPhysique etatPhysique) {
+        this.etatPhysique = etatPhysique;
     }
 
     public Espace getEspace() {
@@ -73,43 +84,28 @@ public class Lit implements Serializable {
         this.espace = espace;
     }
 
-    public List<Sejour> getList() {
-        return list;
+    public Sejour getSejour() {
+        return sejour;
     }
 
-    public void setList(List<Sejour> list) {
-        this.list = list;
+    public void setSejour(Sejour sejour) {
+        this.sejour = sejour;
     }
 
-    public EtatLit getEtat() {
-        return etat;
+    public Service getService() {
+        return service;
     }
 
-    public void setEtat(EtatLit etat) {
-        this.etat = etat;
+    public void setService(Service service) {
+        this.service = service;
     }
 
-    public Lit(String code, TypeLit typeLit, String marque, Espace espace, EtatLit etat) {
+    public Lit(String code, TypeLit typeLit, EtatLit etat, EtatPhysique etatPhysique, Espace espace, Sejour sejour) {
+        this.code = code;
         this.typeLit = typeLit;
-        this.marque = marque;
-        this.espace = espace;
         this.etat = etat;
-        this.code=code;
-
-    }
-    public Lit() {
-    }
-
-    @Override
-    public String toString() {
-        return "Lit{" +
-                "lit_id=" + lit_id +
-                ", code='" + code + '\'' +
-                ", typeLit=" + typeLit +
-                ", marque='" + marque + '\'' +
-                ", espace=" + espace +
-                ", list=" + list +
-                ", etat=" + etat +
-                '}';
+        this.etatPhysique = etatPhysique;
+        this.espace = espace;
+        this.sejour = sejour;
     }
 }

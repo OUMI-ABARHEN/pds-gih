@@ -13,9 +13,6 @@ public class Salle extends Espace implements Serializable {
     @Enumerated(EnumType.STRING)
     private TypeSalle type;
 
-    @Column(name = "codeSalle")
-    private String code;
-
     public Salle() {
         super();
     }
@@ -28,18 +25,11 @@ public class Salle extends Espace implements Serializable {
         this.type = type;
     }
 
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
 
     public Salle(String code, int quantite, Service service, TypeSalle type) {
-        super(quantite,service);
+        super(code,quantite,service);
         this.type=type;
-        this.code = code;
+
     }
 
     @Override

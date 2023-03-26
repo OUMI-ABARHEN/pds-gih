@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface IEspaceDao<T> extends Dao<T> {
     List<T> getService(String nom);
+    Espace findByCode(String code);
 }

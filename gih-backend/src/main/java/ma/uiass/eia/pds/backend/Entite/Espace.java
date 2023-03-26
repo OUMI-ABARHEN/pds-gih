@@ -15,6 +15,17 @@ public class Espace implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="Id")
     private int espace_id;
+    @Column(name = "codeChambre")
+    private String code;
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
     @Column(name="quantite")
     private int quantite;
 
@@ -26,6 +37,8 @@ public class Espace implements Serializable {
     @JoinColumn(name = "Service_id",referencedColumnName = "Id")
     @ManyToOne
     private Service service;
+
+
 
 
     public int getEspace_id() {
@@ -59,8 +72,8 @@ public class Espace implements Serializable {
         this.service = service;
     }
 
-    public Espace(int quantite, Service service) {
-        this.lits = lits;
+    public Espace(String code,int quantite, Service service) {
+        this.code= code;
         this.quantite=quantite;
         this.service = service;
     }
@@ -69,9 +82,9 @@ public class Espace implements Serializable {
 
     @Override
     public String toString() {
-        return "Espace{" +
-                "espace_id=" + espace_id +
+        return "code='" + code + '\'' +
                 ", quantite=" + quantite +
+                ", service=" + service +
                 '}';
     }
 }

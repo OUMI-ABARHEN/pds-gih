@@ -68,7 +68,8 @@ public class OkHttp {
         MetierJob mj = new MetierJob();
         OkHttp o = new OkHttp();
         //o.getIdentifiants();
-        o.getLits();
+        //o.getLits();
+       // o.addService("S102","Urgence","EM005");
         //o.addIdentifiant(new Identifiant("ID0000","kldj","dasf","fs@gmail.com",666679767, Sexe.FEMELAE,"admin",mj.finfByid(1)));
 
     }
@@ -175,6 +176,26 @@ public class OkHttp {
                 throw new IOException(String.valueOf(response));
             }
             System.out.println(response.body().string());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void addService(String code,String nomS,String codeE ){
+        FormBody formBody = new FormBody.Builder()
+                .add("code", code)
+                .build();
+
+        Request request = new Request.Builder()
+                .url("http://localhost:2002/pds/addService/" + code + "/" + nomS + "/" + codeE )
+                .put(formBody)
+                .build();
+        System.out.println(request);
+        try {
+            Response response = okHttpClient.newCall(request).execute();
+            if (!response.isSuccessful()) {
+                throw new IOException(String.valueOf(response));
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
