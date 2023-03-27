@@ -1,0 +1,23 @@
+package ma.uiass.eia.pds.backend.Metier;
+
+import ma.uiass.eia.pds.backend.Dao.DetailDemandeDaoImp;
+import ma.uiass.eia.pds.backend.Dao.ServiceDaoImp;
+import ma.uiass.eia.pds.backend.Entite.DetailDemande;
+import ma.uiass.eia.pds.backend.Entite.EtatPhysique;
+import ma.uiass.eia.pds.backend.Entite.Lit;
+import ma.uiass.eia.pds.backend.Entite.TypeLit;
+
+import java.util.List;
+
+public class MetierDetailDemande {
+    private DetailDemandeDaoImp daoDD= new DetailDemandeDaoImp();
+    private ServiceDaoImp daoS = new ServiceDaoImp();
+
+    public void add(String code, String codeL, TypeLit type, String nameS, int quantite){
+        Lit l = new Lit(codeL,type,null,EtatPhysique.BonEtat,null,null);
+        daoDD.add(new DetailDemande(code,l,daoS.findByName(nameS),quantite));
+    }
+    public List<DetailDemande> getAll(){return daoDD.getAll();}
+
+
+}
