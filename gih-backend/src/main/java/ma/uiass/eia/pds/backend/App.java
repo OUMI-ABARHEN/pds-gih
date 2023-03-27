@@ -96,9 +96,9 @@ public class App
         //System.out.println(mtl.getLits());
 
 
-       /* LocalDate localDate = LocalDate.of(2022, 12, 13);
+        LocalDate localDate = LocalDate.of(2022, 12, 13);
         LocalDateTime localDateTime = localDate.atStartOfDay();
-        Date date = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());*/
+        Date date = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
 
 
         MetierSejour metierSejour=new MetierSejour();
