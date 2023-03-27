@@ -1,6 +1,7 @@
 package ma.uiass.eia.pds.backend.Dao;
 
 import ma.uiass.eia.pds.backend.Entite.Emplacement;
+import ma.uiass.eia.pds.backend.Entite.Job;
 import ma.uiass.eia.pds.backend.HibernateUtility.HibernateUtility;
 
 import javax.persistence.EntityManager;
@@ -78,8 +79,8 @@ public class EmplacementDaoImp implements IEmplacementDap{
 
     @Override
     public Emplacement findByCode(String code) {
-        TypedQuery<Emplacement> query = em.createQuery("Select e FROM Emplacement e WHERE e.code = :code", Emplacement.class);
-        query.setParameter("code", code);
+        TypedQuery<Emplacement> query = em.createQuery("Select e FROM Emplacement e WHERE e.codeEmplacement = :code", Emplacement.class);
+        query.setParameter("nom", code);
         try {
             return query.getSingleResult();
         } catch (NonUniqueResultException e) {

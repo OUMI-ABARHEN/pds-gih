@@ -18,9 +18,9 @@ public class Form_Home extends JPanel {
 
     public Form_Home() {
         initComponents();
-        //card1.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/raven/icon/stock.png")), "Stock Total", "$200000", "Increased by 60%"));
-        //card2.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/raven/icon/profit.png")), "Total Profit", "$15000", "Increased by 25%"));
-        //card3.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/raven/icon/flag.png")), "Unique Visitors", "$300000", "Increased by 70%"));
+        card1.setData(new Model_Card(null, "Stock Total", "100", "Increased by 60%"));
+        card2.setData(new Model_Card(null, "Total Profit", "2000", "Increased by 25%"));
+        card3.setData(new Model_Card(null, "Unique Visitors", "7888", "Increased by 70%"));
         //  add row table
         spTable.setVerticalScrollBar(new ScrollBar());
         spTable.getVerticalScrollBar().setBackground(Color.WHITE);

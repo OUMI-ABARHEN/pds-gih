@@ -1,13 +1,11 @@
 package ma.uiass.eia.pds.backend.Metier;
 
 import ma.uiass.eia.pds.backend.Dao.DetailDemandeDaoImp;
+import ma.uiass.eia.pds.backend.Dao.LitDaoImp;
 import ma.uiass.eia.pds.backend.Dao.ServiceDaoImp;
-import ma.uiass.eia.pds.backend.Entite.DetailDemande;
-import ma.uiass.eia.pds.backend.Entite.EtatPhysique;
-import ma.uiass.eia.pds.backend.Entite.Lit;
-import ma.uiass.eia.pds.backend.Entite.TypeLit;
+import ma.uiass.eia.pds.backend.Entite.*;
 
-import java.util.List;
+import java.util.*;
 
 public class MetierDetailDemande {
     private DetailDemandeDaoImp daoDD= new DetailDemandeDaoImp();

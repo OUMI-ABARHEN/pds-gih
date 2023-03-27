@@ -35,7 +35,7 @@ public class Form_11 extends javax.swing.JPanel {
         //jLabel1.setText("Form 1");
 
         DefaultTableModel tableModel = new DefaultTableModel();
-        tableModel.setColumnIdentifiers(new String[]{"Code", "TypeLit","Etat","Marque","Espace_Id"});
+        tableModel.setColumnIdentifiers(new String[]{"Code", "TypeLit","Etat","Espace_Id"});
         table.setModel(tableModel);
         jScrollPane1.setViewportView(table);
         loadLits(tableModel);

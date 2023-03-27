@@ -33,7 +33,7 @@ public class Form_9 extends javax.swing.JPanel {
         //jLabel1.setText("Form 1");
 
         DefaultTableModel tableModel = new DefaultTableModel();
-        tableModel.setColumnIdentifiers(new String[]{"Code", "Nom de service"});
+        tableModel.setColumnIdentifiers(new String[]{"Code", "Nom de service","Batiment","Etage"});
         table.setModel(tableModel);
         jScrollPane1.setViewportView(table);
         loadLits(tableModel);
@@ -59,7 +59,7 @@ public class Form_9 extends javax.swing.JPanel {
     private void loadLits(DefaultTableModel tableModel) {
         tableModel.setRowCount(0);
         for (Service service : services) {
-            Object[] row = new Object[]{service.getCode(), service.getNomService()};
+            Object[] row = new Object[]{service.getCode(), service.getNomService(),service.getEmplacement().getNomBatiment(),service.getEmplacement().getEtage()};
             tableModel.addRow(row);
         }
     }

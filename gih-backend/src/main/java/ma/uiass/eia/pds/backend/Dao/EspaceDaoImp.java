@@ -1,6 +1,7 @@
 package ma.uiass.eia.pds.backend.Dao;
 
 import ma.uiass.eia.pds.backend.Entite.Espace;
+import ma.uiass.eia.pds.backend.Entite.Service;
 import ma.uiass.eia.pds.backend.HibernateUtility.HibernateUtility;
 
 import javax.persistence.EntityManager;
@@ -108,14 +109,12 @@ public class EspaceDaoImp implements IEspaceDao<Espace> {
 
     @Override
     public Espace findByCode(String code) {
-        TypedQuery<Espace> query = em.createQuery("FROM Espace es WHERE es.code = :code", Espace.class);
+        TypedQuery<Espace> query = em.createQuery("FROM Espace WHERE code = :code", Espace.class);
         query.setParameter("code", code);
-        List<Espace> results = query.getResultList();
-        if (results.isEmpty()) {
+        try {
+            return query.getSingleResult();
+        } catch (NonUniqueResultException e) {
             return null;
-        } else {
-            return results.get(0);
         }
     }
-
 }

@@ -4,6 +4,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import ma.uiass.eia.pds.backend.Entite.Demande;
 import ma.uiass.eia.pds.backend.Entite.EtatDemande;
+import ma.uiass.eia.pds.backend.Entite.Lit;
 import ma.uiass.eia.pds.backend.Metier.MetierDemande;
 
 import java.util.Date;

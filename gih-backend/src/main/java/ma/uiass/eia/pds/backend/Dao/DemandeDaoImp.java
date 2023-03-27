@@ -1,6 +1,7 @@
 package ma.uiass.eia.pds.backend.Dao;
 
 import ma.uiass.eia.pds.backend.Entite.Demande;
+import ma.uiass.eia.pds.backend.Entite.Lit;
 import ma.uiass.eia.pds.backend.HibernateUtility.HibernateUtility;
 
 import javax.persistence.EntityManager;
