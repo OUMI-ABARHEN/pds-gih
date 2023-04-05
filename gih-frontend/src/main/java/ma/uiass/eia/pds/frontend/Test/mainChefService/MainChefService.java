@@ -1,5 +1,6 @@
 package ma.uiass.eia.pds.frontend.Test.mainChefService;
 
+import ma.uiass.eia.pds.frontend.Swing.EventLogin;
 import ma.uiass.eia.pds.frontend.Test.component.Header;
 import ma.uiass.eia.pds.frontend.Test.component.Menu;
 import ma.uiass.eia.pds.frontend.Test.event.EventMenuSelected;
@@ -155,5 +156,10 @@ public class MainChefService extends javax.swing.JFrame {
     private javax.swing.JPanel mainPanel;
     private Menu menu;
     private PanelBorder panelBorder1;
-    // End of variables declaration//GEN-END:variables
+
+    private EventLogin event;
+    public void setEventLogin(EventLogin event) {
+        this.event = event;
+    }
+
 }

@@ -45,7 +45,7 @@ public class Model_Menu {
     private MenuType type;
 
     public Icon toIcon() throws MalformedURLException {
-        return new ImageIcon(new File("/Users/med/pds/gih-frontend/src/main/resources/icon/", icon + ".png").toURI().toURL());
+        return new ImageIcon(new File("/Users/mac/pds/gih-frontend/src/main/resources/icon/", icon + ".png").toURI().toURL());
     }
 
     public static enum MenuType {

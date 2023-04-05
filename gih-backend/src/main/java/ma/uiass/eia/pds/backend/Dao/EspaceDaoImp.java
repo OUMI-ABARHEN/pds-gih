@@ -4,10 +4,7 @@ import ma.uiass.eia.pds.backend.Entite.Espace;
 import ma.uiass.eia.pds.backend.Entite.Service;
 import ma.uiass.eia.pds.backend.HibernateUtility.HibernateUtility;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
-import javax.persistence.NonUniqueResultException;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import java.util.List;
 
 public class EspaceDaoImp implements IEspaceDao<Espace> {
@@ -103,7 +100,7 @@ public class EspaceDaoImp implements IEspaceDao<Espace> {
 
 
     public List<Espace> getService(String nom) {
-        TypedQuery<Espace> query = em.createQuery("SELECT es FROM Espace es where nomService="+nom, Espace.class);
+        TypedQuery<Espace> query = em.createQuery("SELECT es FROM Espace es where service="+nom, Espace.class);
         return query.getResultList();
     }
 
@@ -113,8 +110,9 @@ public class EspaceDaoImp implements IEspaceDao<Espace> {
         query.setParameter("code", code);
         try {
             return query.getSingleResult();
-        } catch (NonUniqueResultException e) {
+        } catch (NoResultException e) {
             return null;
         }
     }
+
 }

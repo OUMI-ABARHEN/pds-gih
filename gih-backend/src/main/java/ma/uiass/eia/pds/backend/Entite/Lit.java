@@ -1,5 +1,7 @@
 package ma.uiass.eia.pds.backend.Entite;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -27,6 +29,7 @@ public class Lit implements Serializable {
     @JoinColumn(name = "espace_id",referencedColumnName = "Id")
     @ManyToOne
     private Espace espace;
+    @JsonIgnore
     @OneToOne(mappedBy = "lit")
     private Sejour sejour;
     @JoinColumn(name = "service_id",referencedColumnName = "Id")
@@ -108,5 +111,19 @@ public class Lit implements Serializable {
         this.etatPhysique = etatPhysique;
         this.espace = espace;
         this.sejour = sejour;
+    }
+
+    @Override
+    public String toString() {
+        return "Lit{" +
+                "lit_id=" + lit_id +
+                ", code='" + code + '\'' +
+                ", typeLit=" + typeLit +
+                ", etat=" + etat +
+                ", etatPhysique=" + etatPhysique +
+                ", espace=" + espace +
+                ", sejour=" + sejour +
+                ", service=" + service +
+                '}';
     }
 }

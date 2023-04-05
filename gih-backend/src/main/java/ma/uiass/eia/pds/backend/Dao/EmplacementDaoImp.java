@@ -79,8 +79,8 @@ public class EmplacementDaoImp implements IEmplacementDap{
 
     @Override
     public Emplacement findByCode(String code) {
-        TypedQuery<Emplacement> query = em.createQuery("Select e FROM Emplacement e WHERE e.codeEmplacement = :code", Emplacement.class);
-        query.setParameter("nom", code);
+        TypedQuery<Emplacement> query = em.createQuery("Select e FROM Emplacement e WHERE e.code = :code", Emplacement.class);
+        query.setParameter("code", code);
         try {
             return query.getSingleResult();
         } catch (NonUniqueResultException e) {

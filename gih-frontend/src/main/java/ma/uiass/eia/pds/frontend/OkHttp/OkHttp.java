@@ -64,15 +64,7 @@ public class OkHttp {
     }
 
 
-    public static void main(String[] args) {
-        MetierJob mj = new MetierJob();
-        OkHttp o = new OkHttp();
-        //o.getIdentifiants();
-        //o.getLits();
-       // o.addService("S102","Urgence","EM005");
-        //o.addIdentifiant(new Identifiant("ID0000","kldj","dasf","fs@gmail.com",666679767, Sexe.FEMELAE,"admin",mj.finfByid(1)));
 
-    }
 
     public List<Identifiant> getIdentifiants() {
         Request request = new Request.Builder().url("http://localhost:2002/pds/identifiants").build();
@@ -201,5 +193,14 @@ public class OkHttp {
         }
     }
 
+    public static void main(String[] args) {
+        MetierJob mj = new MetierJob();
+        OkHttp o = new OkHttp();
+        //o.getIdentifiants();
+        o.getLits();
+        // o.addService("S102","Urgence","EM005");
+        //o.addIdentifiant(new Identifiant("ID0000","kldj","dasf","fs@gmail.com",666679767, Sexe.FEMELAE,"admin",mj.finfByid(1)));
+
+    }
 
 }

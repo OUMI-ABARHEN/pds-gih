@@ -10,7 +10,7 @@ import java.net.URI;
 
 public class Server {
     public static void main(String[] args) {
-        URI baseUri = UriBuilder.fromUri("http://localhost/").port(8888).build();
+        URI baseUri = UriBuilder.fromUri("http://localhost/").port(2002).build();
         ResourceConfig config = new ResourceConfig();
         config.register(ServiceControlor.class);
         config.register(EmplacementControlor.class);
@@ -20,6 +20,7 @@ public class Server {
         config.register(ChambreControlor.class);
         config.register(DemandeControlor.class);
         config.register(DetailDemandeControlor.class);
+        config.register(LoginControlor.class);
         HttpServer server = GrizzlyHttpServerFactory.createHttpServer(baseUri, config);
 
     }

@@ -1,7 +1,6 @@
 package ma.uiass.eia.pds.frontend.Login;
 
-import java.awt.Color;
-import java.awt.Component;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JComponent;
@@ -17,99 +16,33 @@ import org.jdesktop.animation.timing.interpolation.PropertySetter;
 public class LoginAndRegister extends javax.swing.JPanel {
 
     private MigLayout layout;
-    private Register register;
+
     private Login login;
-    private Animator animator;
-    private boolean isLogin;
+
     public static Color mainColor = new Color(104, 206, 246);
 
-    public void setAnimate(int animate) {
-        layout.setComponentConstraints(register, "pos (50%)-290px-" + animate + " 0.5al n n");
-        layout.setComponentConstraints(login, "pos (50%)-10px+" + animate + " 0.5al n n");
-        if (animate == 30) {
-            if (isLogin) {
-                setComponentZOrder(login, 0);
-            } else {
-                setComponentZOrder(register, 0);
-            }
-        }
-        revalidate();
-    }
+
 
     public LoginAndRegister() {
         initComponents();
         init();
-        initAnimator();
+
     }
 
-    private void initAnimator() {
-        animator = new Animator(1000, new TimingTargetAdapter() {
-            @Override
-            public void timingEvent(float fraction) {
-                if (isLogin) {
-                    register.setAlpha(fraction);
-                    login.setAlpha(1f - fraction);
-                } else {
-                    register.setAlpha(1f - fraction);
-                    login.setAlpha(fraction);
-                }
-            }
-        });
-        animator.addTarget(new PropertySetter(this, "animate", 0, 30, 0));
-        animator.setResolution(0);
-    }
 
     private void init() {
         setBackground(mainColor);
-        layout = new MigLayout("fill", "fill", "fill");
+        layout = new MigLayout("fill, insets 100 450 100 450", "fill", "fill");
         setLayout(layout);
-        register = new Register();
         login = new Login();
-        applyEvent(register, false);
-        applyEvent(login, true);
-        add(register, "pos (50%)-290px 0.5al n n");
-        add(login, "pos (50%)-10px 0.5al n n");
-        register.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent me) {
-                if (SwingUtilities.isLeftMouseButton(me)) {
-                    showLogin(false);
-                }
-            }
-        });
-        login.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent me) {
-                if (SwingUtilities.isLeftMouseButton(me)) {
-                    showLogin(true);
-                }
-            }
-        });
+        add(login);
     }
 
-    public void showLogin(boolean show) {
-        if (show != isLogin) {
-            if (!animator.isRunning()) {
-                isLogin = show;
-                animator.start();
-            }
-        }
-    }
 
-    private void applyEvent(JComponent panel, boolean login) {
-        for (Component com : panel.getComponents()) {
-            com.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mousePressed(MouseEvent me) {
-                    showLogin(login);
-                }
-            });
-        }
-    }
 
-    public void setEventLogin(EventLogin event) {
-        login.setEventLogin(event);
-    }
+
+
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
