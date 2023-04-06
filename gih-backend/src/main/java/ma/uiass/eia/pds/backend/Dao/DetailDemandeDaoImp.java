@@ -6,6 +6,7 @@ import ma.uiass.eia.pds.backend.HibernateUtility.HibernateUtility;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.NonUniqueResultException;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
@@ -75,5 +76,36 @@ public class DetailDemandeDaoImp implements IDetailDemandeDao{
             e.printStackTrace();
         }
         return d;
+    }
+
+
+    @Override
+    public void update(DetailDemande d, Demande dem) {
+        EntityTransaction et = null;
+        d.setDemande(dem);
+        try {
+            et = em.getTransaction();
+            if (!et.isActive()) {
+                et.begin();
+            }
+            em.merge(d);
+            et.commit();
+        }catch(Exception e){
+            if (et != null) {
+                et.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public DetailDemande findByCode(String code) {
+        TypedQuery<DetailDemande> query = em.createQuery("FROM DetailDemande WHERE codeDetail = :nom", DetailDemande.class);
+        query.setParameter("nom", code);
+        try {
+            return query.getSingleResult();
+        } catch (NonUniqueResultException e) {
+            return null;
+        }
     }
 }

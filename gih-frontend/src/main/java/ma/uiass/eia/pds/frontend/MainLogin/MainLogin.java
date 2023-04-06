@@ -18,6 +18,7 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
@@ -33,7 +34,7 @@ public class MainLogin extends javax.swing.JFrame {
 //    HttpClient t = new HttpClient();
     private MainChefService mainChefService;
 
-    public MainLogin() throws JsonProcessingException {
+    public MainLogin() throws JsonProcessingException, MalformedURLException {
         initComponents();
         //home = new Home();
         mainChefService = new MainChefService();
@@ -179,6 +180,8 @@ public class MainLogin extends javax.swing.JFrame {
                 try {
                     new MainLogin().setVisible(true);
                 } catch (JsonProcessingException e) {
+                    throw new RuntimeException(e);
+                } catch (MalformedURLException e) {
                     throw new RuntimeException(e);
                 }
             }

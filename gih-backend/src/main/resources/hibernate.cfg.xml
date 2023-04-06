@@ -23,7 +23,7 @@
         </property>
 
         <property name = "hibernate.connection.password">
-            A66h2002
+            FcbFcb2002
         </property>
         <property name="show_sql">true</property>
 

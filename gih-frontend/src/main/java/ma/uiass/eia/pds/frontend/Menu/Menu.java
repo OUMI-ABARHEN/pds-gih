@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Rectangle2D;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -72,6 +73,8 @@ public class Menu extends JComponent {
                         try {
                             loginFrame = new MainLogin();
                         } catch (JsonProcessingException e) {
+                            throw new RuntimeException(e);
+                        } catch (MalformedURLException e) {
                             throw new RuntimeException(e);
                         }
                         loginFrame.setVisible(true);

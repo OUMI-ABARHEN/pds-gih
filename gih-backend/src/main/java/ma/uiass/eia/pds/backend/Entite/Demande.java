@@ -8,7 +8,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-
 @Entity
 @Table(name="Demande")
 public class Demande implements Serializable {
@@ -28,25 +27,32 @@ public class Demande implements Serializable {
     @ManyToOne
     private Service service;
 
-    @Column(name="Description")
-    private String description;
-
     @Column
     @Enumerated(EnumType.STRING)
     private EtatDemande etat;
 
-    @JsonIgnore
+
+
     @OneToMany(mappedBy ="demande")
     private List<DetailDemande> detailDemande ;
 
 
+    public List<DetailDemande> getDetailDemande() {
+        return detailDemande;
+    }
 
-    public Demande(String code, Date date,  String description, EtatDemande etat) {
+    public void setDetailDemande(List<DetailDemande> detailDemande) {
+        this.detailDemande = detailDemande;
+    }
+
+    public Demande(String code, Date date, Service service, EtatDemande etat) {
         this.code = code;
         this.date = date;
         this.service = service;
-        this.description = description;
         this.etat = etat;
+    }
+
+    public Demande() {
     }
 
     public int getDemande_id() {
@@ -81,13 +87,6 @@ public class Demande implements Serializable {
         this.service = service;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public EtatDemande getEtat() {
         return etat;
@@ -95,5 +94,16 @@ public class Demande implements Serializable {
 
     public void setEtat(EtatDemande etat) {
         this.etat = etat;
+    }
+
+    @Override
+    public String toString() {
+        return "Demande{" +
+                "demande_id=" + demande_id +
+                ", code='" + code + '\'' +
+                ", date=" + date +
+                ", service=" + service +
+                ", etat=" + etat +
+                '}';
     }
 }

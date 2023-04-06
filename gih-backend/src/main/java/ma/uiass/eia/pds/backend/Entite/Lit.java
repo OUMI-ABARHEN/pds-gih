@@ -39,6 +39,15 @@ public class Lit implements Serializable {
     public Lit() {
 
     }
+    public Lit(String code, TypeLit typeLit, EtatLit etat, EtatPhysique etatPhysique, Espace espace, Sejour sejour, Service service) {
+        this.code = code;
+        this.typeLit = typeLit;
+        this.etat = etat;
+        this.etatPhysique = etatPhysique;
+        this.espace = espace;
+        this.sejour = sejour;
+        this.service = service;
+    }
 
     public int getLit_id() {
         return lit_id;

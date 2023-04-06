@@ -4,6 +4,7 @@ package ma.uiass.eia.pds.backend.Controleur;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import ma.uiass.eia.pds.backend.Entite.Lit;
+import ma.uiass.eia.pds.backend.Entite.TypeLit;
 import ma.uiass.eia.pds.backend.Metier.MetierLit;
 
 import java.util.List;
@@ -33,20 +34,13 @@ public class LitControlor {
 
     }
 
-   /* @POST
-    @Path("AddLit")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response addLit(@QueryParam("typeLit") TypeLit typeLit,
-                           @QueryParam("marque") String marque,
-                           @QueryParam("code") String code ,
-                           @QueryParam("nom") String nom ,
-                           @QueryParam("qte") Integer qte ,
-                           @QueryParam("etat") EtatLit etat) {
-        Service s=new Service(code,nom);
-        Espace e=new Espace(qte,s);
-        metierlit.addLit(typeLit, marque, e, etat);
-        return Response.status(Response.Status.CREATED).build();
-    }*/
+    @POST
+    @Path("/addLitStock")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public void addLit(@FormParam("typeLit") TypeLit typeLit, @FormParam("nomS") String nomS) {
+        metierlit.addLitStock(typeLit,nomS);
+    }
 
 
 

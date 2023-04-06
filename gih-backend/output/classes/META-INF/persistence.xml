@@ -11,7 +11,7 @@
             <property name="hibernate.connection.driver_class" value ="com.mysql.jdbc.Driver"/>
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/pds"/>
             <property name="hibernate.connection.username" value="root"/>
-            <property name="hibernate.connection.password" value="A66h2002"/>
+            <property name="hibernate.connection.password" value="FcbFcb2002"/>
 
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL57Dialect"/>

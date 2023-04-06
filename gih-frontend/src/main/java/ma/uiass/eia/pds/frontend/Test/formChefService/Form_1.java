@@ -79,8 +79,10 @@ public class Form_1 extends javax.swing.JPanel {
     private void loadLits(DefaultTableModel tableModel) {
         tableModel.setRowCount(0);
         for (Lit lit : lits) {
-            Object[] row = new Object[]{lit.getCode(), lit.getTypeLit(),lit.getEtatPhysique(),null,lit.getEspace().getEspace_id()};
-            tableModel.addRow(row);
+            if (lit.getEspace()!=null) {
+                Object[] row = new Object[]{lit.getCode(), lit.getTypeLit(), lit.getEtatPhysique(), null, lit.getEspace().getEspace_id()};
+                tableModel.addRow(row);
+            }
         }
     }
 

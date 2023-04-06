@@ -1,5 +1,7 @@
 package ma.uiass.eia.pds.backend.Entite;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -14,7 +16,7 @@ public class DetailDemande implements Serializable {
 
     @Column(name="codeDetail")
     private String code;
-
+    @JsonIgnore
     @JoinColumn(name = "Demande_id",referencedColumnName = "Id")
     @ManyToOne
     private Demande demande;
@@ -22,15 +24,15 @@ public class DetailDemande implements Serializable {
     @Column(name="quantite")
     private int quantite;
 
+    @Column(name="TypeLit")
+    @Enumerated(EnumType.STRING)
+    private TypeLit type;
 
-    private Lit lit;
-    private Service service;
-
-    public DetailDemande(String code,  Lit lit, Service service,int quantite) {
+    public DetailDemande(String code,  TypeLit type, int quantite) {
         this.code = code;
         this.quantite = quantite;
-        this.lit = lit;
-        this.service = service;
+        this.type= type;
+
     }
 
     public int getQuantite() {
@@ -65,19 +67,24 @@ public class DetailDemande implements Serializable {
         this.demande = demande;
     }
 
-    public Lit getLit() {
-        return lit;
+    public TypeLit getType() {
+        return type;
     }
 
-    public void setLit(Lit lit) {
-        this.lit = lit;
+    public void setType(TypeLit type) {
+        this.type = type;
     }
 
-    public Service getService() {
-        return service;
+    public DetailDemande() {
     }
 
-    public void setService(Service service) {
-        this.service = service;
+    @Override
+    public String toString() {
+        return "DetailDemande{" +
+                "detail_id=" + detail_id +
+                ", code='" + code + '\'' +
+                ", quantite=" + quantite +
+                ", type=" + type +
+                '}';
     }
 }
