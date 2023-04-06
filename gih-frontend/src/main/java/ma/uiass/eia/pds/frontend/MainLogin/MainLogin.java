@@ -5,12 +5,10 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.*;
-import ma.uiass.eia.pds.frontend.Home.Home;
-import ma.uiass.eia.pds.frontend.Http.HttpClient;
 import ma.uiass.eia.pds.frontend.Login.LoginAndRegister;
 import ma.uiass.eia.pds.frontend.Swing.EventLogin;
-import ma.uiass.eia.pds.frontend.Test.main.Main;
-import ma.uiass.eia.pds.frontend.Test.mainChefService.MainChefService;
+import ma.uiass.eia.pds.frontend.Test.main.MainChefService;
+
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
