@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -21,7 +23,7 @@ public class Sejour implements Serializable {
     @Column(name="date_sortie")
     private Date date_sortie;
 
-    @JsonIgnore
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "lit_id", referencedColumnName = "Id")
     private Lit lit;
@@ -72,6 +74,9 @@ public class Sejour implements Serializable {
     public String toString() {
         return "Sejour{" +
                 "sejour_id=" + sejour_id +
+                ", date_entre=" + date_entre +
+                ", date_sortie=" + date_sortie +
+                ", lit=" + lit +
                 '}';
     }
 }

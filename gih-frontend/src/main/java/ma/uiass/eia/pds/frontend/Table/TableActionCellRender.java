@@ -63,9 +63,9 @@ public class TableActionCellRender extends DefaultTableCellRenderer {
         // Set the appropriate icon for the cell based on the value of the EtatLit object
         try {
             if (etatLit == EtatLit.DISPONIBLE) {
-                setIcon(new ImageIcon(new File("/Users/mac/pds/gih-frontend/src/main/resources/icon/greenBed.png").toURI().toURL()));
+                setIcon(new ImageIcon(new File("/Users/obarhen/Desktop/pds-gih/gih-frontend/src/main/resources/icon/greenBed.png").toURI().toURL()));
             } else {
-                setIcon(new ImageIcon(new File("/Users/mac/pds/gih-frontend/src/main/resources/icon/redBed.png").toURI().toURL()));
+                setIcon(new ImageIcon(new File("/Users/obarhen/Desktop/pds-gih/gih-frontend/src/main/resources/icon/redBed.png").toURI().toURL()));
             }
         } catch (MalformedURLException ex) {
             throw new RuntimeException(ex);

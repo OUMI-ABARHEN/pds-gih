@@ -34,4 +34,7 @@ public class MetierLit {
         daoL.update(l,etat);
 
     }
+    public Lit findbycode(String code){
+        return daoL.findbyCode(code);
+    }
 }

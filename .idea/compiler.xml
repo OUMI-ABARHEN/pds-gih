@@ -18,5 +18,8 @@
         <module name="gih-backend" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="mojab" target="18" />
+    </bytecodeTargetLevel>
   </component>
 </project>

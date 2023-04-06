@@ -3,8 +3,7 @@ package ma.uiass.eia.pds.backend.Controleur;
 
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
-import ma.uiass.eia.pds.backend.Entite.Lit;
-import ma.uiass.eia.pds.backend.Entite.TypeLit;
+import ma.uiass.eia.pds.backend.Entite.*;
 import ma.uiass.eia.pds.backend.Metier.MetierLit;
 
 import java.util.List;
@@ -41,10 +40,20 @@ public class LitControlor {
     public void addLit(@FormParam("typeLit") TypeLit typeLit, @FormParam("nomS") String nomS) {
         metierlit.addLitStock(typeLit,nomS);
     }
+    @GET
+    @Path ("LitByCode{codelit}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Lit findLitbycode(@PathParam("codelit") String codeLit) {
+        return metierlit.findbycode(codeLit);
 
+    }
 
-
-
+    @POST
+    @Path("UpdateLit/{codeLit}/{etatLit}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public void updateEtatLit(@PathParam("codeLit")String codeLit,@PathParam("etatLit") EtatLit etatLit){
+        metierlit.updateEtat(metierlit.findbycode(codeLit).getLit_id(),etatLit);
+    }
 
 
 }

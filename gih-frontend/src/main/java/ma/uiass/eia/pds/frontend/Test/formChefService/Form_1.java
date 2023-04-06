@@ -77,20 +77,22 @@ public class Form_1 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loadLits(DefaultTableModel tableModel) {
-        tableModel.setRowCount(0);
-        for (Lit lit : lits) {
-            if (lit.getEspace()!=null) {
-                Object[] row = new Object[]{lit.getCode(), lit.getTypeLit(), lit.getEtatPhysique(), null, lit.getEspace().getEspace_id()};
-                tableModel.addRow(row);
+
+            tableModel.setRowCount(0);
+            for (Lit lit : lits) {
+                if (lit.getEspace()!=null) {
+                    Object[] row = new Object[]{lit.getCode(), lit.getTypeLit(), lit.getEtatPhysique(), null, lit.getEspace().getEspace_id()};
+                    tableModel.addRow(row);
+                }
             }
         }
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
+
 }
 
 

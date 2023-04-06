@@ -7,6 +7,7 @@ import ma.uiass.eia.pds.backend.HibernateUtility.HibernateUtility;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.NonUniqueResultException;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
@@ -95,7 +96,16 @@ public class LitDaoImp implements ILitDao{
             }
             e.printStackTrace();
         }
+    }
 
+    public Lit findbyCode(String code) {
+        TypedQuery<Lit> query = em.createQuery("FROM Lit l WHERE l.code = :code", Lit.class);
+        query.setParameter("code", code);
+        try {
+            return query.getSingleResult();
+        } catch (NonUniqueResultException e) {
+            return null;
+        }
     }
 }
 

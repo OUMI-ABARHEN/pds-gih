@@ -10,7 +10,9 @@ import okhttp3.*;
 import org.codehaus.jettison.json.JSONException;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class OkHttp {
@@ -192,6 +194,88 @@ public class OkHttp {
             throw new RuntimeException(e);
         }
     }
+
+    public List<SejourFormatted> getSejours() {
+        Request request = new Request.Builder().url("http://localhost:2002/pds/sejours").build();
+        List<SejourFormatted> sejours = new ArrayList<>();
+        try {
+            Response response = okHttpClient.newCall(request).execute();
+            if (!response.isSuccessful()) {
+                throw new IOException(String.valueOf(response));
+            }
+            JsonElement jsonElement = gson.fromJson(response.body().charStream(), JsonElement.class);
+            JsonArray jsonArray = jsonElement.getAsJsonArray();
+            for (JsonElement j : jsonArray) {
+                JsonObject jsonObject = j.getAsJsonObject();
+                System.out.println(jsonObject);
+                SejourFormatted sejour = gson.fromJson(jsonObject, SejourFormatted.class);
+                sejours.add(sejour);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return sejours;
+    }
+
+    public void addSejourok(Date date_entre, Date date_sortie, String code) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+
+        String date_entre_str = formatter.format(date_entre);
+        String date_sortie_str = formatter.format(date_sortie);
+
+        RequestBody formBody = new FormBody.Builder()
+                .add("date_entre", date_entre_str)
+                .add("date_sortie", date_sortie_str)
+                .add("Code", code)
+                .build();
+
+        Request request = new Request.Builder()
+                .url("http://localhost:2002/pds/addsejour/" + date_entre_str + "/" + date_sortie_str + "/" + code)
+                .put(formBody)
+                .build();
+
+        try (Response response = okHttpClient.newCall(request).execute()) {
+            if (!response.isSuccessful()) {
+                throw new IOException("Unexpected response code: " + response);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    } //add okhttp
+
+    public void updateEtatLit(String codeLit, EtatLit etatLit) {
+        String url = "http://localhost:2002/pds/UpdateLit/" + codeLit + "/" + etatLit.toString();
+        Request request = new Request.Builder().url(url).post(RequestBody.create("", MediaType.parse("application/json"))).build();
+
+        try {
+            Response response = okHttpClient.newCall(request).execute();
+            if (!response.isSuccessful()) {
+                throw new IOException(String.valueOf(response));
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Lit getLitByCode(String code) {
+        Request request = new Request.Builder().url("http://localhost:2002/pds/LitByCode" + code).build();
+        Lit lit = null;
+        try {
+            Response response = okHttpClient.newCall(request).execute();
+            if (!response.isSuccessful()) {
+                throw new IOException(String.valueOf(response));
+            }
+            JsonElement jsonElement = gson.fromJson(response.body().charStream(), JsonElement.class);
+            JsonObject jsonObject = jsonElement.getAsJsonObject();
+            System.out.println(jsonObject);
+            lit = gson.fromJson(jsonObject, Lit.class);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return lit;
+    }
+
 
     public static void main(String[] args) {
         MetierJob mj = new MetierJob();
